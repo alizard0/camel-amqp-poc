@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.0</version>
+		<version>2.3.1.RELEASE</version>
 		<relativePath/>
 	</parent>
 
@@ -14,9 +14,34 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>camel-amqp-poc</name>
 	<description>POC for camel-amqp</description>
+
 	<properties>
 		<java.version>1.8</java.version>
+		<spring-boot.version>2.3.1.RELEASE</spring-boot.version>
+		<camel.version>3.4.2</camel.version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Spring Boot BOM -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- Camel BOM for spring boot -->
+			<dependency>
+				<groupId>org.apache.camel.springboot</groupId>
+				<artifactId>camel-spring-boot-dependencies</artifactId>
+				<version>${camel.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -26,25 +51,20 @@
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
 			<artifactId>camel-spring-boot-starter</artifactId>
-			<version>3.1.0</version>
-		</dependency>
-		<!-- camel servlet starter -->
-		<dependency>
-			<groupId>org.apache.camel.springboot</groupId>
-			<artifactId>camel-servlet-starter</artifactId>
-			<version>3.0.0</version>
 		</dependency>
 		<!-- dependency for AMQP -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-amqp</artifactId>
-			<version>3.14.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-amqp-starter</artifactId>
 		</dependency>
 		<!-- dependency for json serializer (marshal) -->
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
 			<artifactId>camel-jackson-starter</artifactId>
-			<version>3.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -8,7 +8,7 @@ public class ConsumeEventRoute extends RouteBuilder {
 
   @Override
   public void configure() {
-    from("amqp:topic:events")
-            .log("Message received ·${body}");
+    from("amqp:queue:events")
+            .log("Message received ${body}");
   }
 }

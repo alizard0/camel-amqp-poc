@@ -5,7 +5,7 @@ proof of concept for camel-amqp using camel-rest for exposing amqp routes.
 ```bash
 $ cd rabbitmq
 $ docker build -t my-rabbit .
-$ docker run -d my-rabbit
+$ docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 my-rabbit:latest
 ```
 
 **run application**

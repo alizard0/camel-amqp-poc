@@ -12,6 +12,7 @@ public class ServiceRoute extends RouteBuilder {
     restConfiguration()
             .component("servlet")
             .bindingMode(RestBindingMode.auto)
+            .endpointProperty("servletName", "RestServlet")
             .dataFormatProperty("prettyPrint", "true");
 
     rest("/event")

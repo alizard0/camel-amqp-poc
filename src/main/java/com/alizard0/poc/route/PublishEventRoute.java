@@ -19,7 +19,8 @@ public class PublishEventRoute extends RouteBuilder {
     from("direct:publishEvent")
             .id("publishEventDirectRoute")
             .log("Publishing event ${body}")
-            .process(exchange -> exchange.getIn().getHeaders().putAll(CloudEventsUtils.getHeaders(properties)))
+            // disabling cloudevents on amqp because JMS does not support it
+            //.process(exchange -> exchange.getIn().getHeaders().putAll(CloudEventsUtils.getHeaders(properties)))
             .to(ExchangePattern.InOnly,"amqp:queue:events")
             .end();
   }
